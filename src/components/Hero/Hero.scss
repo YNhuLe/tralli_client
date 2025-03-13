@@ -1,0 +1,17 @@
+@use "../../styles/partials/mixin" as *;
+.hero {
+  @include flex(row, center, flex-start);
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.worker {
+  width: 6rem;
+  margin-top: 2rem;
+}
+.vector {
+  width: 100%;
+  position: absolute;
+  top: 48%;
+  z-index: -12;
+}

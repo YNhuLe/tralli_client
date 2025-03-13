@@ -1,0 +1,11 @@
+@use "../../styles/partials/variables" as *;
+
+.demo {
+  border: none;
+  outline: none;
+  background-color: $button-color;
+  color: $white;
+  padding: 0.8rem 1.2rem;
+  border-radius: 1.2rem;
+  cursor: pointer;
+}

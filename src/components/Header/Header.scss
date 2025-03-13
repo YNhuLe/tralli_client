@@ -1,0 +1,15 @@
+@use "../../styles/partials/mixin" as *;
+
+.header {
+  @include flex(row, space-between, center);
+  margin-right: 1rem;
+}
+
+.logo {
+  cursor: pointer;
+}
+.menu {
+  size: 2rem;
+  color: black;
+  cursor: pointer;
+}
