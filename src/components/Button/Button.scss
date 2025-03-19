@@ -5,7 +5,28 @@
   outline: none;
   background-color: $primary-color;
   color: $white;
-  padding: 0.8rem 1.2rem;
-  border-radius: 1.2rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: .7rem;
   cursor: pointer;
+  margin: 1rem;
+}
+
+.request-demo{
+   width: calc(100% - 2rem);
+}
+
+.open-camera, .upload-img{
+    margin-right: 0;
+margin-top: 0;
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+
+}
+.upload-img{
+  background-color: $border-grey;
+
+}
+.open-camera{
+  background-color: $medium-grey;
+
 }

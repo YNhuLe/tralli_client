@@ -48,12 +48,13 @@ function Hero() {
             We make the search for external maintenance pros easier for you and
             your homeowners
           </p>
-
-          <Button />
         </div>
         <img src={worker} className="worker" alt="trade-worker" />
       </section>
-      <img src={vector} alt="vector" className="vector" />
+      <div className="button__active">
+        <Button url="/demo" />
+        <img src={vector} alt="vector" className="vector" />
+      </div>
     </>
   );
 }

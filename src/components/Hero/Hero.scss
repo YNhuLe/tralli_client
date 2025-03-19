@@ -11,13 +11,10 @@
   margin-top: 2rem;
 }
 .vector {
-  width: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100vh;
-  z-index: -12;
-  object-fit: contain;
+    @include vector(-1rem);
+  bottom: -1rem;
+
+
 }
 
 .trade__service{
@@ -25,4 +22,7 @@
   display: inline-block;
   width: 8rem;
   white-space: nowrap;
+}
+.button__active{
+  position: relative;
 }

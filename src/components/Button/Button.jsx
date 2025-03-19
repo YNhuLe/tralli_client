@@ -1,10 +1,36 @@
 import "./Button.scss";
+import { Link, useNavigate } from "react-router-dom";
+function Button({ btnType, url, onSubmit, onClick }) {
+  const navigate = useNavigate();
 
-function Button() {
+  if (onSubmit || onClick) {
+    return (
+      <button
+        className={`demo demo-btn ${
+          btnType === "demo"
+            ? "request-demo"
+            : btnType === "upload_img"
+            ? "upload-img"
+            : btnType === "open_camera"
+            ? "open-camera"
+            : ""
+        }`}>
+        {btnType === "demo"
+          ? "Request Demo"
+          : btnType === "upload_img"
+          ? "Upload an image or video"
+          : btnType === "open_camera"
+          ? "Open your camera application"
+          : "Book a free demo"}
+      </button>
+    );
+  }
   return (
-    <>
-      <button className="demo">Book a free demo</button>
-    </>
+    <Link to={url}>
+      <button className="demo demo-btn">
+        {btnType === "demo" ? "Request Demo" : "Book a free demo"}
+      </button>
+    </Link>
   );
 }
 

@@ -1,5 +1,5 @@
 import "./App.scss";
-import HomePageContent from "./components/HomePageContent/HomePageContent";
+import HomePageContent from "./pages/HomePageContent/HomePageContent";
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,19 +7,20 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import Header from "./components/Header/Header";
-
+import FormPage from "./pages/FormPage/FormPage";
+import UserHomePage from "./pages/UserHomePage/UserHomePage";
 function App() {
   return (
     <div>
       <Router>
-        <Header />
         <Routes>
-          <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/home" element={<HomePageContent />} />
-          {/* <Route path="/home/demo" element={<DemoPage />} />
-          <Route path="/home/signin" element={<SigninPage />} />
-          <Route path="/home/login" element={<LoginPage />} /> */}
+          {/* <Route path="/" element={<Navigate to="/home" />} /> */}
+          <Route path="/" element={<HomePageContent />} />
+          <Route path="/demo" element={<FormPage />} />
+          {/* <Route path="/home/signin" element={<SigninPage />} />
+          <Route path="/home/login" element={<LoginPage />} />  */}
+          <Route path="/categories" element={<UserHomePage />} />
+          <Route path="*" element={<h1>404 NOT FOUND</h1>} />
         </Routes>
       </Router>
     </div>

@@ -1,0 +1,10 @@
+@use "../../styles/partials/variables" as *;
+.article__card {
+  border: 0.15rem solid $primary-color;
+  border-radius: 0.8rem;
+  margin: 1rem;
+  padding: 0.2rem 0.7rem;
+  text-align: center;
+}
+//modal for the
+//can be error by invalid, message
