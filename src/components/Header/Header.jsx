@@ -2,6 +2,7 @@ import "./Header.scss";
 import logo from "../../assets/images/logo.svg";
 import { Menu } from "lucide-react";
 import Hero from "../Hero/Hero";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
 function Header() {
   return (
@@ -10,7 +11,8 @@ function Header() {
         <a href="./">
           <img src={logo} className="logo" alt="logo" />
         </a>
-        <Menu className="menu" />
+        {/* <Menu className="menu" /> */}
+        <BurgerMenu />
       </div>
       <Hero />
     </>
