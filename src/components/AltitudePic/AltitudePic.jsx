@@ -1,10 +1,10 @@
 import "./AltitudePic.scss";
 
-function AltitudePic() {
+function AltitudePic({ alType, residentialCom }) {
   return (
-    <div className="altitude">
+    <div className={`altitude ${alType === "trades" ? "altitude-trades" : ""}`}>
       <h1 className="location">Altitude at</h1>
-      <p className="location__name">Three Sister Mountain Village</p>
+      <p className="location__name">{residentialCom}</p>
     </div>
   );
 }

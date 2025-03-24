@@ -1,0 +1,25 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+
+.service {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  &__item {
+    @include flex(row, center, center);
+  }
+
+  &__list {
+    background-color: $primary-medium-green;
+    border-radius: 0.8rem;
+    margin: 0.7rem;
+    margin-left: 0;
+    padding: 1rem 1.7rem;
+    text-align: center;
+    width: 80%;
+  }
+}
+.checkbox {
+  margin-top: 0.1875rem;
+  width: 2rem;
+  height: 2rem;
+}

@@ -30,7 +30,7 @@ input {
   position: fixed;
 
   &__content {
-    background: $white;
+    background: $secondary-white;
     padding: 20px;
     border-radius: 8px;
     text-align: center;
@@ -57,3 +57,7 @@ input {
     cursor: pointer;
    
 }}
+.demo__form{
+   margin-right: 1rem;
+  margin-left: 1rem;
+  }

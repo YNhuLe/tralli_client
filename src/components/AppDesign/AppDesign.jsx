@@ -16,17 +16,17 @@ function AppDesign() {
         <div className="description">
           <p className="description__trades">
             Find your trades pro based on{" "}
-            <span className="highlight">job titles </span>and{" "}
-            <span className="highlight">describe your fix</span>
+            <span className="highlight">job titles </span>or{" "}
+            <span className="highlight">images</span>
           </p>
-          <KebabMenu size={48} />
+          <KebabMenu />
           <p className="description__partner">
             Get connected with a Tralli Partner{" "}
             <span className="highlight">
               who knows your multi-family development
             </span>
           </p>
-          <KebabMenu size={48} />
+          <KebabMenu />
 
           <p className="description__track">
             Track, manage and complete{" "}

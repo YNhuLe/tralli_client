@@ -1,0 +1,23 @@
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+
+.error {
+  &__state {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding-top: 0.25rem;
+  }
+
+  &__icon {
+    height: 1rem;
+  }
+
+  &__message {
+    color: $red-error;
+  }
+}
+
+.invalid {
+  border-color: $red-error;
+}

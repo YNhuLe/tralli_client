@@ -4,8 +4,11 @@
   @include flex(row, center, flex-start);
   padding-left: 1rem;
   padding-right: 1rem;
-}
 
+}
+.intro{
+    @include mobile-page-header;
+}
 .worker {
   width: 6rem;
   margin-top: 2rem;
@@ -18,11 +21,14 @@
 }
 
 .trade__service{
-  color: $primary-color;
+  color: $primary-medium-green;
   display: inline-block;
   width: 8rem;
   white-space: nowrap;
 }
 .button__active{
   position: relative;
+}
+.details{
+  @include mobile-body-copy;
 }

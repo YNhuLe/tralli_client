@@ -1,0 +1,22 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+
+.title {
+  color: $primary-medium-green;
+}
+
+.or {
+  @include flex(row, center, center);
+  margin: 1rem;
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    border-bottom: solid 0.1rem black;
+    margin: 0 auto;
+  }
+}
+.or__cross {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}

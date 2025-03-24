@@ -1,17 +1,18 @@
 @use "../../styles/partials/variables" as *;
-
-.demo {
+@use "../../styles/partials/mixin" as *;
+.demo{
   border: none;
   outline: none;
-  background-color: $primary-color;
-  color: $white;
+  background-color: $primary-medium-green;
+  color: $secondary-white;
   padding: 0.6rem 1.2rem;
   border-radius: .7rem;
   cursor: pointer;
   margin: 1rem;
+  @include mobile-label-button;
 }
 
-.request-demo{
+.request-demo, .sign-up{
    width: calc(100% - 2rem);
 }
 
@@ -27,6 +28,6 @@ margin-top: 0;
 
 }
 .open-camera{
-  background-color: $medium-grey;
+  background-color: $secondary-light-grey;
 
 }

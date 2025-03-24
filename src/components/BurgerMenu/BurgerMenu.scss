@@ -13,12 +13,12 @@
 }
 .menu-link {
   text-decoration: none;
-  color: $white;
+  color: $secondary-white;
   text-align: center;
 }
 
 .menu-link:hover {
-  color: $primary-color;
+  color: $primary-medium-green;
 }
 .toggle {
   background: none;
@@ -31,7 +31,7 @@
     height: 2rem;
   }
   &:hover {
-    color: $medium-grey;
+    color: $secondary-light-grey;
   }
 }
 

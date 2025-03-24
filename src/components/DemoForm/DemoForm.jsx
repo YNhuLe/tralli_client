@@ -8,6 +8,7 @@ import axios from "axios";
 import { X } from "lucide-react";
 import checkmark from "../../assets/icons/confirm-checkmark.svg";
 import ReactModal from "react-modal";
+import Header from "../Header/Header";
 ReactModal.setAppElement("#root");
 function DemoForm() {
   const [fName, setFName] = useState("");
@@ -118,7 +119,6 @@ function DemoForm() {
     <>
       <form className="demo__form" onSubmit={handleRequestDemo}>
         <div className="demo__form-property">
-          {/* <label className="first_name">First Name</label> */}
           <input
             type="text"
             value={fName}
@@ -138,7 +138,6 @@ function DemoForm() {
         </div>
 
         <div className="demo__form-property">
-          {/* <label className="last_name">Last Name</label> */}
           <input
             type="text"
             value={lName}
@@ -158,7 +157,6 @@ function DemoForm() {
         </div>
 
         <div className="demo__form-property">
-          {/* <label className="company">Company</label> */}
           <input
             type="text"
             value={company}
@@ -178,7 +176,6 @@ function DemoForm() {
         </div>
 
         <div className="demo__form-property">
-          {/* <label className="job__title">Job Title</label> */}
           <input
             type="text"
             value={jobTitle}
@@ -198,7 +195,6 @@ function DemoForm() {
         </div>
 
         <div className="demo__form-property">
-          {/* <label className="job__title">Business Email</label> */}
           <input
             type="text"
             value={businessEmail}
@@ -213,10 +209,7 @@ function DemoForm() {
             {error.businessEmail && (
               <>
                 <img src={errors} alt="error-icon" className="error__icon" />
-                <p className="error__message">
-                  {/* Email must be in a valid format (e.g., example@domain.com) */}
-                  {error.businessEmail}
-                </p>
+                <p className="error__message">{error.businessEmail}</p>
               </>
             )}
           </div>

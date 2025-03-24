@@ -1,6 +1,138 @@
 @use "./variables" as *;
 @use "./typography";
 
+//font mobile
+@mixin mobile-page-header{
+  font-family: "Inter";
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  font-weight: 900;
+}
+
+@mixin mobile-section-header{
+  font-family: "Inter";
+  font-size: 1.125rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+}
+
+@mixin mobile-subheader-header{
+  font-family: "Inter";
+  font-size: .9375rem;
+  line-height:1.125rem;
+  font-weight: 600;
+}
+
+@mixin mobile-body-copy{
+  font-family: "Inter";
+  font-size: .75rem;
+  line-height:1rem;
+  font-weight: 400;
+}
+
+@mixin mobile-footer-copy{
+  font-family: "Inter";
+  font-size: .625rem;
+  line-height:1rem;
+  font-weight: 400;
+}
+
+@mixin mobile-label-button{
+  font-family: "Inter";
+  font-size: .875rem;
+  line-height:1rem;
+  font-weight: 600;
+}
+
+//font-tablet
+@mixin tablet-page-header{
+  font-family: "Inter";
+  font-size: 2.5rem;
+  line-height:3.125rem;
+  font-weight: 900;
+}
+
+@mixin tablet-section-header{
+  font-family: "Inter";
+  font-size: 1.875rem;
+  line-height:2.1875rem;
+  font-weight: 600;
+}
+
+@mixin tablet-subheader-header{
+  font-family: "Inter";
+  font-size: 1.5625rem;
+  line-height:2.1875rem;
+  font-weight: 600;
+}
+
+@mixin tablet-body-copy{
+  font-family: "Inter";
+  font-size:1.25rem;
+  line-height:1.5625rem;
+  font-weight: 400;
+}
+
+@mixin tablet-footer-copy{
+  font-family: "Inter";
+  font-size: .875rem;
+  line-height:1.5625rem;
+  font-weight: 400;
+}
+
+@mixin tablet-label-button{
+  font-family: "Inter";
+  font-size: 1.375rem;
+  line-height:1.5625rem;
+  font-weight: 600;
+}
+
+//font-desktop
+@mixin desktop-page-header{
+  font-family: "Inter";
+  font-size: 3.75rem;
+  line-height:4.25rem;
+  font-weight: 900;
+}
+
+@mixin desktop-section-header{
+  font-family: "Inter";
+  font-size:3.125rem;
+  line-height:3.4375rem;
+  font-weight: 600;
+}
+
+@mixin desktop-subheader-header{
+  font-family: "Inter";
+  font-size: 2.8125rem;
+  line-height:3.4375rem;
+  font-weight: 600;
+}
+
+@mixin desktop-body-copy{
+  font-family: "Inter";
+  font-size:1.875rem;
+  line-height:2.1875rem;
+  font-weight: 400;
+}
+
+@mixin desktop-footer-copy{
+  font-family: "Inter";
+  font-size: 1.25rem;
+  line-height:1.25rem;
+  font-weight: 400;
+}
+
+@mixin desktop-label-button{
+  font-family: "Inter";
+  font-size:2rem;
+  line-height:1.25rem;
+  font-weight: 600;
+}
+
+
+
+
 @mixin tablet {
   @media (min-width: $tablet-breakpoint) {
     @content;

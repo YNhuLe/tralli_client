@@ -6,16 +6,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function Hero() {
-  const [service, setService] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const apiURL = import.meta.env.VITE_API_URL;
-  const serviceListURL = `${apiURL}/`;
+  const categoriesListURL = `${apiURL}/`;
 
   useEffect(() => {
     const fetchService = async () => {
       try {
-        const response = await axios.get(serviceListURL);
-        setService(response.data);
+        const response = await axios.get(categoriesListURL);
+        setCategories(response.data);
       } catch (error) {
         console.error("Error fetching services: ", error);
       }
@@ -24,12 +24,12 @@ function Hero() {
   }, []);
 
   useEffect(() => {
-    if (service.length === 0) return;
+    if (categories.length === 0) return;
     const interval = setInterval(() => {
-      setCurrentIndex((preIndex) => (preIndex + 1) % service.length);
+      setCurrentIndex((preIndex) => (preIndex + 1) % categories.length);
     }, 300);
     return () => clearInterval(interval);
-  }, [service]);
+  }, [categories]);
   return (
     <>
       <section className="hero">
@@ -37,8 +37,8 @@ function Hero() {
           <h1 className="intro">
             Find a trusted, local{" "}
             <span className="trade__service">
-              {service.length > 0
-                ? service[currentIndex].services_name
+              {categories.length > 0
+                ? categories[currentIndex].category_name
                 : "Service"}
             </span>{" "}
             in your multi-family community in minutes

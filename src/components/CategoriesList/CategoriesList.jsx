@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./CategoriesList.scss";
 import axios from "axios";
+import { Link, useParams } from "react-router-dom";
 import CategoriesCard from "../CategoriesCard/CategoriesCard";
 
 function CategoriesList() {
@@ -27,7 +28,9 @@ function CategoriesList() {
     <section className="category__list">
       {category.map((cat, index) => (
         <div className="category__item" key={index}>
-          <CategoriesCard category={cat} />
+          <Link to={`/categories/${cat.id}/services`}>
+            <CategoriesCard category={cat} />
+          </Link>
         </div>
       ))}
     </section>

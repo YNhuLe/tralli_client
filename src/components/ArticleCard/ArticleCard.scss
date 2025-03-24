@@ -1,10 +1,19 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
 .article__card {
-  border: 0.15rem solid $primary-color;
+  border: 0.15rem solid $primary-medium-green;
   border-radius: 0.8rem;
   margin: 1rem;
   padding: 0.2rem 0.7rem;
   text-align: center;
+
+  &-title{
+    @include mobile-subheader-header;
+  }
+  
+  &-content{
+    @include mobile-body-copy;
+  }
+
 }
-//modal for the
-//can be error by invalid, message
+

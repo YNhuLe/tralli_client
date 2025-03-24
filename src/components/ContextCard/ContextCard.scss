@@ -1,3 +1,12 @@
+
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
 .context__card-img {
   width: 100%;
+}
+.title{
+  @include mobile-section-header;
+}
+.content{
+  @include mobile-body-copy;
 }

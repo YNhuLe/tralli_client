@@ -8,7 +8,8 @@
 .list {
   list-style: none;
   padding-left: 0;
-  line-height: 2rem;
+  @include mobile-body-copy;
+  line-height: 1.5rem;
   &__about,
   &__blog,
   &__login,
@@ -19,6 +20,6 @@
 
 .term {
   @include flex(row, space-between, center);
-  font-size: 0.5rem;
+@include mobile-footer-copy;
   margin: 1rem;
 }

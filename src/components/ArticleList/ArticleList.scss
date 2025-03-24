@@ -1,23 +1,24 @@
-@use "../../styles//partials//variables" as *;
+@use "../../styles//partials/variables" as *;
+@use "../../styles//partials/mixin" as *;
 .white-theme {
-  background-color: $mint-cream;
+  background-color: $primary-tealish-green-1;
 }
 
 .lightgreen-theme {
-  background-color: $primary-color;
-  opacity: 0.61;
-  color: $white;
+  background-color:$primary-tealish-green-2;
+
+  color: $secondary-white;
 }
 
 .darkgreen-theme {
-  background-color: $primary-color;
-  color: $white;
+  background-color: $primary-medium-green;
+  color: $secondary-white;
 }
 .message__text {
   text-align: center;
-  font-weight: bold;
+@include mobile-page-header;
   margin: 1.5rem;
 }
 .text {
-  color: $primary-color;
+  color: $primary-medium-green;
 }

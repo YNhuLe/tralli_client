@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./BurgerMenu.scss";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function BurgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,14 +46,14 @@ function BurgerMenu() {
             </a>
           </li>
           <li>
-            <a className="menu-link" href="/#">
+            <Link className="menu-link" to="/login">
               Login
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="menu-link" href="/#">
+            <Link className="menu-link" to="/signup">
               Sign Up
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

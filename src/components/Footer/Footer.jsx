@@ -19,10 +19,6 @@ function Footer() {
       <section className="term">
         <p className="copy-right">© {date} Tralli Ltd. All rights reserved.</p>
         <ServiceTerms />
-        {/* <div className="privacy">
-          <p className="privacy-policy">Privacy Policy</p>
-          <p className="privacy-term">Terms of Use</p>
-        </div> */}
       </section>
     </footer>
   );

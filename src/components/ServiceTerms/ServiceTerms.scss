@@ -2,8 +2,7 @@
 @use "../../styles/partials/variables" as *;
 
 .privacy {
-  font-size: 0.5rem;
-  font-weight: bold;
+ @include mobile-footer-copy;
   @include flex(row, center, center);
   column-gap: 0.5rem;
   &-policy,
