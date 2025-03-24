@@ -1,0 +1,63 @@
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+
+input {
+  border: 0.05rem solid $border-grey;
+  padding: 0.5rem 1.5rem;
+  margin-top: 1rem;
+  width: calc(100% - 2rem);
+  line-height: 1.5rem;
+  border-radius: 0.6rem;
+}
+.error__state {
+  color: $red-error;
+  @include flex(row, center, center);
+  font-size: 0.7rem;
+}
+.error__message {
+  width: 11.875rem;
+}
+.invalid {
+  border: 0.1rem solid $red-error;
+}
+.modal {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  @include flex(row, center, center);
+  top: 0;
+  left: 0;
+  position: fixed;
+
+  &__content {
+    background: $secondary-white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+ margin:0 1rem;
+  }
+  &__close {
+    position: absolute;
+    top:.625rem;
+    left: .625rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+
+&__demo{
+    border: none;
+    outline: none;
+    background-color: unset;
+    color:$border-grey;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.7rem;
+    cursor: pointer;
+   
+}}
+.demo__form{
+   margin-right: 1rem;
+  margin-left: 1rem;
+  }

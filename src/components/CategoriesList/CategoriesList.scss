@@ -1,0 +1,13 @@
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+
+.category__list {
+  @include flex(row, center, center);
+  flex-wrap: wrap;
+}
+
+.category__item {
+  width: calc(50% - 0.1rem);
+  padding: 0.4rem;
+  text-align: center;
+}

@@ -1,0 +1,19 @@
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+
+.category {
+  background-color: #34a85399;
+  border-radius: 0.5rem;
+  width: 100%;
+  padding: 0.01rem;
+  cursor: pointer;
+  &__name {
+    color: $border-grey;
+    margin-top: 0.625rem;
+    margin-bottom: 0.625rem;
+  }
+}
+
+.category:hover {
+  transform: scaleY(1.1);
+}

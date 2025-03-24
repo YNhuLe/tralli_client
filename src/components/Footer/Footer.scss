@@ -1,0 +1,25 @@
+@use "../../styles/partials/mixin" as *;
+.footer {
+  text-align: center;
+  &__logo {
+    cursor: pointer;
+  }
+}
+.list {
+  list-style: none;
+  padding-left: 0;
+  @include mobile-body-copy;
+  line-height: 1.5rem;
+  &__about,
+  &__blog,
+  &__login,
+  &__contact {
+    cursor: pointer;
+  }
+}
+
+.term {
+  @include flex(row, space-between, center);
+@include mobile-footer-copy;
+  margin: 1rem;
+}

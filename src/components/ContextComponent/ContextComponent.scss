@@ -1,0 +1,13 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+.context {
+  margin: 1rem;
+}
+
+.highlight {
+  color: $primary-medium-green;
+}
+
+.vector-2 {
+  @include vector(-66rem);
+}

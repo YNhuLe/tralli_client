@@ -1,0 +1,296 @@
+import { useState } from "react";
+import "./SignupForm.scss";
+import errors from "../../assets/icons/error-24px.svg";
+import Button from "../Button/Button";
+import axios from "axios";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import validator from "validator";
+
+function SignupForm() {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmedPass, setConfirmedPass] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [residentialCom, setResidentialCom] = useState([]);
+  const navigate = useNavigate();
+
+  const [error, setError] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+    confirmedPass: "",
+    phoneNumber: "",
+    residentialCom: "",
+    address: "",
+  });
+
+  const baseUrl = import.meta.env.VITE_API_URL;
+  console.log("Base URL: ", baseUrl);
+
+  const addUserUrl = `${baseUrl}/newUser`;
+  console.log("Base URL: ", addUserUrl);
+  const handleChangeFullName = (event) => {
+    setFullName(event.target.value);
+  };
+  const handleChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleChangeAddress = (event) => {
+    setAddress(event.target.value);
+  };
+
+  const handleChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
+  const handleChangeConfirmedPass = (event) => {
+    setConfirmedPass(event.target.value);
+  };
+
+  const handleChangePhoneNumber = (event) => {
+    setPhoneNumber(event.target.value);
+  };
+
+  const handleChangeResidentialCom = (event) => {
+    setResidentialCom(event.target.value);
+  };
+
+  const phoneRegex = /^\+\d{1,3} \(\d{3}\) \d{3}-\d{4}$/;
+  const newError = () => {
+    return {
+      fullName: fullName.trim() ? "" : "Full name is required!",
+
+      address: address.trim() ? "" : "Address is required!",
+      password: password.trim() ? "" : "Password is required!",
+      confirmedPass: confirmedPass.trim()
+        ? ""
+        : "Confirmed password is required!",
+      phoneNumber: !phoneNumber.trim()
+        ? "Phone number field is required!"
+        : !phoneRegex.test(phoneNumber)
+        ? "Phone number must be in format: +1 (919) 797-2875"
+        : "",
+      email: !email.trim()
+        ? "Email field is required!"
+        : !validator.isEmail(email)
+        ? "Email must be valid"
+        : "",
+    };
+  };
+
+  const handleReset = () => {
+    setFullName("");
+    setAddress("");
+    setPassword("");
+    setConfirmedPass("");
+    setPhoneNumber("");
+    setResidentialCom("");
+    setError({
+      fullName: "",
+      address: "",
+      password: "",
+      confirmedPass: "",
+      phoneNumber: "",
+      residentialCom: "",
+    });
+  };
+  const handleSignup = async (event) => {
+    event.preventDefault();
+    const validatorError = newError();
+    setError(validatorError);
+    if (Object.values(validatorError).some((error) => error)) {
+      return;
+    }
+
+    try {
+      console.log("Inside the try============");
+      const auth = getAuth();
+
+      const userCredentials = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredentials.user;
+      const userData = {
+        uid: user.uid,
+        user_name: fullName,
+        address: address,
+        email: email,
+        phone_number: phoneNumber,
+        residential_community: residentialCom,
+      };
+      const response = await axios.post(
+        addUserUrl,
+
+        userData
+      );
+
+      navigate(
+        `/categories?fullName=${encodeURIComponent(
+          fullName
+        )}&residentialCom=${encodeURIComponent(residentialCom)}`
+      );
+
+      handleReset();
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        setError((prev) => ({
+          ...prev,
+          businessEmail: error.response.data.message,
+        }));
+      }
+      console.error("Error adding new user to the users database: ", error);
+    }
+  };
+  return (
+    <>
+      <form className="signup__form" onSubmit={handleSignup}>
+        <div className="signup__form-property">
+          <input
+            type="text"
+            value={fullName}
+            name="fullName"
+            onChange={handleChangeFullName}
+            placeholder="Full Name"
+            className={`signup__form-input ${error.fullName ? "invalid" : ""}`}
+          />
+          <div className={error.fullName ? "error__state" : ""}>
+            {error.fullName && (
+              <>
+                <img src={errors} alt="error-icon" className="error__icon" />
+                <p className="error__message">This field is required</p>
+              </>
+            )}
+          </div>
+        </div>
+
+        <div className="signup__form-property">
+          <input
+            type="text"
+            value={email}
+            name="email"
+            onChange={handleChangeEmail}
+            placeholder="Email"
+            className={`signup__form-input ${error.email ? "invalid" : ""}`}
+          />
+          <div className={error.email ? "error__state" : ""}>
+            {error.email && (
+              <>
+                <img src={errors} alt="error-icon" className="error__icon" />
+                <p className="error__message">This field is required</p>
+              </>
+            )}
+          </div>
+        </div>
+
+        <div className="signup__form-property">
+          <input
+            type="password"
+            value={password}
+            name="password"
+            onChange={handleChangePassword}
+            placeholder="Password"
+            className={`signup__form-input ${error.password ? "invalid" : ""}`}
+          />
+          <div className={error.password ? "error__state" : ""}>
+            {error.password && (
+              <>
+                <img src={errors} alt="error-icon" className="error__icon" />
+                <p className="error__message">This field is required</p>
+              </>
+            )}
+          </div>
+        </div>
+
+        <div className="signup__form-property">
+          <input
+            type="password"
+            value={confirmedPass}
+            name="confirmedPass"
+            onChange={handleChangeConfirmedPass}
+            placeholder="Confirmed Password"
+            className={`signup__form-input ${
+              error.confirmedPass ? "invalid" : ""
+            }`}
+          />
+          <div className={error.confirmedPass ? "error__state" : ""}>
+            {error.confirmedPass && (
+              <>
+                <img src={errors} alt="error-icon" className="error__icon" />
+                <p className="error__message">This field is required</p>
+              </>
+            )}
+          </div>
+        </div>
+
+        <div className="signup__form-property">
+          <input
+            type="text"
+            value={address}
+            name="address"
+            onChange={handleChangeAddress}
+            placeholder="Address"
+            className={`signup__form-input ${error.email ? "invalid" : ""}`}
+          />
+          <div className={error.address ? "error__state" : ""}>
+            {error.address && (
+              <>
+                <img src={errors} alt="error-icon" className="error__icon" />
+                <p className="error__message">This field is required</p>
+              </>
+            )}
+          </div>
+        </div>
+
+        <div className="signup__form-property">
+          <input
+            type="text"
+            value={phoneNumber}
+            name="phoneNumber"
+            onChange={handleChangePhoneNumber}
+            placeholder="Phone Number"
+            className={`signup__form-input ${
+              error.phoneNumber ? "invalid" : ""
+            }`}
+          />
+          <div className={error.phoneNumber ? "error__state" : ""}>
+            {error.phoneNumber && (
+              <>
+                <img src={errors} alt="error-icon" className="error__icon" />
+                <p className="error__message">This field is required</p>
+              </>
+            )}
+          </div>
+        </div>
+
+        <div className="signup__form-property">
+          <input
+            type="text"
+            value={residentialCom}
+            name="residentialCom"
+            onChange={handleChangeResidentialCom}
+            placeholder="Residential Community"
+            className={`signup__form-input ${
+              error.residentialCom ? "invalid" : ""
+            }`}
+          />
+          <div className={error.residentialCom ? "error__state" : ""}>
+            {error.residentialCom && (
+              <>
+                <img src={errors} alt="error-icon" className="error__icon" />
+                <p className="error__message">This field is required</p>
+              </>
+            )}
+          </div>
+        </div>
+        <Button btnType="signup" url="/signup" onClick={handleSignup} />
+      </form>
+    </>
+  );
+}
+
+export default SignupForm;

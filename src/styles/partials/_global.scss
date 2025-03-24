@@ -1,0 +1,21 @@
+@use "./mixin" as *;
+@use "./typography";
+@use "./variables" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  background-color: $secondary-white;
+  overflow-x: hidden;
+}
+
+a{
+  text-decoration: none;
+}
