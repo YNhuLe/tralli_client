@@ -1,21 +1,26 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "./CategoryServiceDetails.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CategoriesCard from "../CategoriesCard/CategoriesCard";
+import Button from "../Button/Button";
 function CategoryServiceDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const residentialCom = params.get("residentialCom");
+
   const [categoryDetails, setCategoryDetails] = useState([]);
   const baseUrl = import.meta.env.VITE_API_URL;
-  const categoryServiceDatailsUrl = `${baseUrl}/categories/${id}/services`;
-  console.log("Cate: ", categoryDetails);
-
+  const categoryServiceDetailsUrl = `${baseUrl}/categories/${id}/services`;
+  console.log("services ========:", categoryServiceDetailsUrl);
   useEffect(() => {
     const fetchCategoriesDetails = async () => {
       try {
-        const response = await axios.get(categoryServiceDatailsUrl);
+        const response = await axios.get(categoryServiceDetailsUrl);
         setCategoryDetails(response.data);
-        console.log("Categories: ", response.data);
+        console.log("Serivces: ", response.data);
       } catch (error) {
         console.error(`Error fetching categories details: `, error);
       }
@@ -23,8 +28,14 @@ function CategoryServiceDetails() {
     fetchCategoriesDetails();
   }, [id]);
 
-  const handleSubmitService = () => {
+  const handleSubmitService = (e) => {
+    e.preventDefault();
     console.log("Send");
+    navigate(
+      `/categories/${id}/provider?residentialCom=${encodeURIComponent(
+        residentialCom || ""
+      )}`
+    );
   };
 
   return (
@@ -43,6 +54,13 @@ function CategoryServiceDetails() {
         ) : (
           <p>Loading services ...</p>
         )}
+        <input
+          title="Not captured above? We want to make sure we find you the right person. Add more details here."
+          type="text"
+          className="service__input"
+          placeholder="Not captured above? We want to make sure we find you the right person. Add more details here."
+        />
+        <Button btnType="submit" onClick={handleSubmitService} />
       </form>
     </>
   );

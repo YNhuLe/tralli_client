@@ -12,6 +12,7 @@ import UserHomePage from "./pages/UserHomePage/UserHomePage";
 import TradeRequirementsPage from "./pages/TradeRequirementsPage/TradeRequirementsPage";
 import DemoForm from "./components/DemoForm/DemoForm";
 import SignupPage from "./pages/SignupPage/SignupPage";
+import BusinessDetails from "./pages/BusinessDetails/BusinessDetails";
 function App() {
   return (
     <div>
@@ -28,6 +29,11 @@ function App() {
             path="/categories/:id/services"
             element={<TradeRequirementsPage />}
           />
+          <Route
+            path="/categories/:id/provider"
+            element={<BusinessDetails />}
+          />
+
           <Route path="*" element={<h1>404 NOT FOUND</h1>} />
         </Routes>
       </Router>
