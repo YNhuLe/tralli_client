@@ -4,12 +4,19 @@
 .service {
   margin-left: 1rem;
   margin-right: 1rem;
+  &__input{
+    height: 5rem;
+    width: calc(100% - 2rem);
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+ 
+  }
   &__item {
     @include flex(row, center, center);
   }
 
   &__list {
-    background-color: $primary-medium-green;
+    background-color:$primary-tealish-green-2;
     border-radius: 0.8rem;
     margin: 0.7rem;
     margin-left: 0;

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import AltitudePic from "../../components/AltitudePic/AltitudePic";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
+import TradeRequirementsPage from "../TradeRequirementsPage/TradeRequirementsPage";
 function UserHomePage() {
   const [user, setUser] = useState([]);
   const baseUrl = import.meta.env.VITE_API_URL;

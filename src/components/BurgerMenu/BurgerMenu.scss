@@ -1,12 +1,14 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixin" as *;
 
-.menu__list {
+.menu{
+      z-index: 20;
+  &__list {
   list-style: none;
   @include flex(column, center, center);
   padding-left: 0;
   row-gap: 0.5rem;
-}
+}}
 .menu__container {
   position: relative;
   bottom: 0.5rem;
