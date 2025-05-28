@@ -1,11 +1,10 @@
-import "./SignupPage.scss";
+import "./CompleteProfilePage.scss";
 import logo from "../../assets/images/logo.svg";
-import SignupForm from "../../components/SignupForm/SignupForm";
+import CompleteProfile from "../../components/CompleteProfile/CompleteProfile";
+import { Link } from "react-router-dom";
 import ServiceTerms from "../../components/ServiceTerms/ServiceTerms";
 import Header from "../../components/Header/Header";
-import { Link } from "react-router-dom";
-import Login from "../../components/Login/Login";
-function SignupPage() {
+function CompleteProfilePage() {
   return (
     <>
       <Header formType="signup" />
@@ -14,15 +13,13 @@ function SignupPage() {
           <img src={logo} className="logo" alt="logo-icon" />
         </Link>
         <div className="intro">
-          <h2 className="title">Create an account</h2>
-          <p className="details">Enter your email to sign up for Tralli</p>
+          <h2 className="title">Complete your profile</h2>
+          <p className="details">
+            We just need a few more details to complete your profile
+          </p>
         </div>
 
-        <SignupForm />
-        <div className="or">
-          <span className="or__cross">or</span>
-        </div>
-        <Login />
+        <CompleteProfile />
 
         <div className="policy">
           <p className="consent"> By clicking continue, you agree to our </p>
@@ -34,4 +31,4 @@ function SignupPage() {
   );
 }
 
-export default SignupPage;
+export default CompleteProfilePage;
