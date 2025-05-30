@@ -1,8 +1,8 @@
 import "./Header.scss";
-import logo from "../../assets/images/logo.svg";
+import logo from "../../../assets/images/logo.svg";
 import { Link, Menu } from "lucide-react";
-import Hero from "../Hero/Hero";
-import BurgerMenu from "../BurgerMenu/BurgerMenu";
+import Hero from "../../Hero/Hero";
+import BurgerMenu from "../../BurgerMenu/BurgerMenu";
 import { ArrowLeftCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 function Header({ formType }) {

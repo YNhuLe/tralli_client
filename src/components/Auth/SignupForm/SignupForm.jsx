@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./SignupForm.scss";
-import errors from "../../assets/icons/error-24px.svg";
-import Button from "../Button/Button";
+import errors from "../../../assets/icons/error-24px.svg";
+import Button from "../../common/Button/Button";
 import axios from "axios";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -28,10 +28,8 @@ function SignupForm() {
   });
 
   const baseUrl = import.meta.env.VITE_API_URL;
-  console.log("Base URL: ", baseUrl);
 
   const addUserUrl = `${baseUrl}/newUser`;
-  console.log("Base URL: ", addUserUrl);
   const handleChangeFullName = (event) => {
     setFullName(event.target.value);
   };
@@ -138,10 +136,19 @@ function SignupForm() {
       handleReset();
     } catch (error) {
       if (error.response && error.response.status === 400) {
-        setError((prev) => ({
-          ...prev,
-          businessEmail: error.response.data.message,
-        }));
+        const message = error.response.data.message;
+        if (message.includes("Email")) {
+          setError((prev) => ({
+            ...prev,
+            // businessEmail: error.response.data.message,
+            email: message,
+          }));
+        } else if (message.includes("Phone")) {
+          setError((prev) => ({
+            ...prev,
+            phoneNumber: message,
+          }));
+        }
       }
       console.error("Error adding new user to the users database: ", error);
     }
@@ -181,7 +188,7 @@ function SignupForm() {
             {error.email && (
               <>
                 <img src={errors} alt="error-icon" className="error__icon" />
-                <p className="error__message">This field is required</p>
+                <p className="error__message">{error.email}</p>
               </>
             )}
           </div>
@@ -261,7 +268,10 @@ function SignupForm() {
             {error.phoneNumber && (
               <>
                 <img src={errors} alt="error-icon" className="error__icon" />
-                <p className="error__message">This field is required</p>
+                <p className="error__message">
+                  {error.phoneNumber ||
+                    "This field is required in format: +0 (000) 000-0000"}
+                </p>
               </>
             )}
           </div>

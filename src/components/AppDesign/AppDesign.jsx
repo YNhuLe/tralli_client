@@ -1,7 +1,7 @@
 import "./AppDesign.scss";
 import mobile from "../../assets/images/phone-screen.png";
 
-import Button from "../Button/Button";
+import Button from "../common/Button/Button";
 import KebabMenu from "../KebabMenu/KebabMenu";
 function AppDesign() {
   return (

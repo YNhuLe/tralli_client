@@ -1,0 +1,45 @@
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+
+.business {
+  @include mobile-page-header;
+  margin: 1rem;
+  margin-top: 2rem;
+  &_img {
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    border-radius: 0.7rem;
+  }
+  &__name {
+    margin-left: 1rem;
+    margin-bottom: 0;
+  }
+}
+
+.provider {
+  @include flex(row, center, center);
+  &__star,
+  &__location,
+  &__cost {
+    color: $secondary-light-grey;
+    &-amount {
+      color: $primary-medium-green;
+      font-weight: 600;
+    }
+  }
+  &__star {
+    margin-right: 3rem;
+  }
+  &__cost {
+    margin-left: 1rem;
+    margin-top: 0;
+  }
+}
+.calendar {
+  text-align: center;
+}
+.react-calendar {
+  margin-left: 1rem;
+  width: calc(100% - 2rem);
+  margin-bottom: 3rem;
+}

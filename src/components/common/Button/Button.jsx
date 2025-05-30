@@ -15,6 +15,10 @@ function Button({ btnType, url, onSubmit, onClick }) {
             ? "open-camera"
             : btnType === "signup"
             ? "sign-up"
+            : btnType === "submit"
+            ? "btn-submit"
+            : btnType === "submit-job"
+            ? "submit-job"
             : ""
         }`}>
         {btnType === "demo"
@@ -25,6 +29,12 @@ function Button({ btnType, url, onSubmit, onClick }) {
           ? "Open your camera application"
           : btnType === "signup"
           ? "Sign Up"
+          : btnType === "submit"
+          ? "Submit"
+          : btnType === "submit-job"
+          ? "Job Confirmation"
+          : btnType === "signin"
+          ? "Log In"
           : "Book a free demo"}
       </button>
     );

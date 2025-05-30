@@ -1,27 +1,29 @@
-import React from "react";
+import "./CompleteProfilePage.scss";
 import logo from "../../assets/images/logo.svg";
-import DemoForm from "../../components/DemoForm/DemoForm";
-import "./FormPage.scss";
+import CompleteProfile from "../../components/Auth/CompleteProfile/CompleteProfile";
+import { Link } from "react-router-dom";
 import ServiceTerms from "../../components/common/ServiceTerms/ServiceTerms";
 import Header from "../../components/common/Header/Header";
-import { Link } from "react-router-dom";
-
-function FormPage() {
+function CompleteProfilePage() {
   return (
     <>
-      <Header formType="demo" />
+      <Header formType="signup" />
       <div className="form__page">
         <Link to={"/"}>
           <img src={logo} className="logo" alt="logo-icon" />
         </Link>
         <div className="intro">
-          <h2 className="title">Request a demo</h2>
-          <p className="details">Get connected with a 1:1 demo with sales</p>
+          <h2 className="title">Complete your profile</h2>
+          <p className="details">
+            We just need a few more details to complete your profile
+          </p>
         </div>
-        <DemoForm />
-        {/* <SignupForm /> */}
+
+        <CompleteProfile />
+
         <div className="policy">
           <p className="consent"> By clicking continue, you agree to our </p>
+
           <ServiceTerms />
         </div>
       </div>
@@ -29,4 +31,4 @@ function FormPage() {
   );
 }
 
-export default FormPage;
+export default CompleteProfilePage;

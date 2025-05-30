@@ -1,0 +1,22 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+
+.service__details{
+    margin-left: 1rem;
+}
+
+.cate{
+    background-color: $primary-medium-green;
+    border-radius: .7rem;
+    width: calc(100% - 2rem);
+    padding: .25rem;
+    margin :2.5rem auto;
+
+    &__text{
+        text-align: center;
+
+    }
+    &__title{
+        @include mobile-section-header;
+    }
+}
