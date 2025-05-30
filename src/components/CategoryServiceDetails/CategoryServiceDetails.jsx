@@ -3,7 +3,7 @@ import "./CategoryServiceDetails.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CategoriesCard from "../CategoriesCard/CategoriesCard";
-import Button from "../Button/Button";
+import Button from "../common/Button/Button";
 function CategoryServiceDetails() {
   const { id } = useParams();
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./SignupForm.scss";
-import errors from "../../assets/icons/error-24px.svg";
-import Button from "../Button/Button";
+import errors from "../../../assets/icons/error-24px.svg";
+import Button from "../../common/Button/Button";
 import axios from "axios";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";

@@ -5,10 +5,10 @@ import "react-calendar/dist/Calendar.css";
 import axios from "axios";
 import "./BusinessDetails.scss";
 import { useParams, useLocation } from "react-router-dom";
-import Header from "../../components/Header/Header";
+import Header from "../../components/common/Header/Header";
 import AltitudePic from "../../components/AltitudePic/AltitudePic";
 import business_img from "../../assets/images/business.png";
-import Button from "../../components/Button/Button";
+import Button from "../../components/common/Button/Button";
 function BusinessDetails() {
   const [business, setBusiness] = useState([]);
   const baseUrl = import.meta.env.VITE_API_URL;

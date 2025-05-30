@@ -2,8 +2,8 @@ import React from "react";
 import logo from "../../assets/images/logo.svg";
 import DemoForm from "../../components/DemoForm/DemoForm";
 import "./FormPage.scss";
-import ServiceTerms from "../../components/ServiceTerms/ServiceTerms";
-import Header from "../../components/Header/Header";
+import ServiceTerms from "../../components/common/ServiceTerms/ServiceTerms";
+import Header from "../../components/common/Header/Header";
 import { Link } from "react-router-dom";
 
 function FormPage() {

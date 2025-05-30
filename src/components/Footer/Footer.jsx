@@ -1,6 +1,6 @@
 import "./Footer.scss";
 import logo from "../../assets/images/logo.svg";
-import ServiceTerms from "../ServiceTerms/ServiceTerms";
+import ServiceTerms from "../common/ServiceTerms/ServiceTerms";
 function Footer() {
   const date = new Date().getFullYear();
   return (
