@@ -1,5 +1,7 @@
 import { useState } from "react";
-
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "../../../firebase/config";
+import axios from "axios";
 import errors from "../../../assets/icons/error-24px.svg";
 import "./SignIn.scss";
 import validator from "validator";
@@ -54,6 +56,46 @@ function SignIn() {
       handleResetForm();
     } catch (error) {
       console.error("Can not sign in! ", error);
+    }
+  };
+
+  const handleEmailPasswordLogin = async (email, password) => {
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      const user = result.user;
+      const { uid, displayName, email: signinEmail } = user;
+      await checkIfUserExists(uid, displayName, signinEmail, navigate);
+    } catch (error) {
+      console.error("Can not log in using email and password");
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      const { uid, displayName, email } = user;
+      await checkIfUserExists(uid, displayName, email, navigate);
+    } catch (error) {
+      console.error("can not sign in using Google account!");
+    }
+  };
+
+  const checkIfUserExists = async (uid, displayName, email, navigate) => {
+    try {
+      const res = await axios.get(`${checkUserUrl}/${uid}`);
+      const data = res.data;
+      console.log("data:", data);
+      //user is not sign up yet, navigate to complete-profile form
+      if (!data.exists) {
+        navigate("/signup/complete-profile", {
+          state: { uid, displayName, email },
+        });
+      } else {
+        navigate("/categories"); //user already signed up => navigate to main page
+      }
+    } catch (error) {
+      console.error("Error checking user exists? ", error.message);
     }
   };
   return (

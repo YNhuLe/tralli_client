@@ -18,30 +18,23 @@ function Login() {
   useEffect(() => {
     const checkUserAuth = async () => {
       try {
-        // console.log("Checking if a user is logged in...");
-
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-          // console.log("Auth state changed:", currentUser);
           setUser(currentUser);
         });
 
-        // console.log("Fetching redirect result...");
         const result = await getRedirectResult(auth);
         if (result && result.user) {
-          // console.log("Google sign-in result:", result.user);
           setUser(result.user);
         }
 
         return () => unsubscribe();
-      } catch (error) {
-        // console.error("Error checking user authentication:", error);
-      }
+      } catch (error) {}
     };
 
     checkUserAuth();
   }, []);
 
-  //check if user existing the backend
+  // //check if user existing the backend
   const checkIfUserExists = async (uid, displayName, email, navigate) => {
     try {
       const response = await axios.get(`${checkUserUrl}/${uid}`);
@@ -55,7 +48,15 @@ function Login() {
         });
       } else {
         console.log("User exists");
-        navigate("/categories");
+        // navigate("/categories");
+        navigate("/categories", {
+          state: {
+            uid,
+            userName: displayName,
+            email,
+            residentialCom: data.residential_community,
+          },
+        });
       }
     } catch (error) {
       console.error("Error checking user:", error);
@@ -63,7 +64,6 @@ function Login() {
   };
   const handleGoogleLogin = async () => {
     try {
-      // console.log("Redirecting to Google Sign-In...");
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
       console.log("USER: ", user);
@@ -75,13 +75,6 @@ function Login() {
 
       const { uid, displayName, email } = user;
       await checkIfUserExists(uid, displayName, email, navigate);
-
-      // const userData = await response.data.json();
-      // if (userData.exists) {
-      //   navigate("/categories");
-      // } else {
-      //   navigate("/complete-profile", { state: { uid, displayName, email } });
-      // }
     } catch (error) {
       console.error("Google Sign-In error:", error);
     }
@@ -89,15 +82,10 @@ function Login() {
 
   return (
     <div className="google">
-      {/* {user ? (
-        <h2>Welcome, {user.displayName}!</h2>
-      ) : ( */}
       <button onClick={handleGoogleLogin} className="google__btn ">
-        {" "}
         <FcGoogle size={20} />
         Continue with Google
       </button>
-      {/* )} */}
     </div>
   );
 }
