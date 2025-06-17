@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 function CompleteProfile() {
   const [addAddress, setAddAddress] = useState("");
   const [addPhoneNumber, setAddPhoneNumber] = useState("");
-  const [addResidentialCom, setAddResidentialCom] = useState([]);
+  const [addResidentialCom, setAddResidentialCom] = useState("");
   const [errors, setError] = useState({
     addAddress: "",
     addPhoneNumber: "",
@@ -17,6 +17,12 @@ function CompleteProfile() {
   const { uid, displayName, email } = location.state || {};
   const baseUrl = import.meta.env.VITE_API_URL;
   const addUserUrl = `${baseUrl}/newUser`;
+  console.log("Navigating with data:", {
+    userName: displayName,
+    email,
+    residentialCom: addResidentialCom,
+  });
+
   const handleChangeAddAddress = (event) => {
     setAddAddress(event.target.value);
   };
@@ -25,6 +31,7 @@ function CompleteProfile() {
   };
 
   const handleChangeAddResidentialCom = (event) => {
+    console.log("Residential Community input changed:", event.target.value);
     setAddResidentialCom(event.target.value);
   };
 
@@ -72,11 +79,19 @@ function CompleteProfile() {
         residential_community: addResidentialCom,
       };
       const response = await axios.post(addUserUrl, userAdditionalData);
-      navigate(
-        `/categories?fullName=${encodeURIComponent(
-          displayName
-        )}&residentialCom=${encodeURIComponent(addResidentialCom)}`
-      );
+      console.log("Navigating to /categories with:", {
+        userName: displayName,
+        residentialCom: addResidentialCom,
+      });
+      navigate("/categories", {
+        state: {
+          userName: displayName,
+          email: email,
+          residentialCom: addResidentialCom,
+          address: addAddress,
+          phoneNumber: addPhoneNumber,
+        },
+      });
       handleReset();
     } catch (error) {
       console.error("Error adding new user's info via Google Signup ", error);
@@ -162,7 +177,7 @@ function CompleteProfile() {
           )}
         </div>
       </div>
-      <Button btnType="signup" url="/signup" onClick={handleAdditionalForm} />
+      <Button btnType="signup" onClick={handleAdditionalForm} />
     </form>
   );
 }
