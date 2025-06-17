@@ -1,24 +1,38 @@
 import CategoriesList from "../../components/CategoriesList/CategoriesList";
 import "./UserHomePage.scss";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AltitudePic from "../../components/AltitudePic/AltitudePic";
 import Button from "../../components/common/Button/Button";
 import Header from "../../components/common/Header/Header";
 import TradeRequirementsPage from "../TradeRequirementsPage/TradeRequirementsPage";
+import { getUserDetails } from "../../api/userAPI";
 function UserHomePage() {
   const [user, setUser] = useState([]);
   const baseUrl = import.meta.env.VITE_API_URL;
   const userUrl = `${baseUrl}/user`;
   const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const userName = params.get("fullName");
-  const residentialCom = params.get("residentialCom");
+  const navigate = useNavigate();
+  const { userName, residentialCom } = location.state || {};
+
+  // console.log("residentiakl: ", residentialCom);
+  // console.log("residentiakl: ", userName);
+  useEffect(() => {
+    if (!location.state) {
+      alert("You must log in to access to this page!");
+      navigate("/login");
+    }
+  }, [location.state, navigate]);
+
+  const UID = location.uid;
+  console.log("Location state:", location.state);
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const userResponse = await axios.get(userUrl);
+        // const userResponse = await axios.get(userUrl);
+        const userResponse = await getUserDetails(UID);
+        console.log("Response: ", userResponse);
         setUser(userResponse.data);
       } catch (error) {
         console.error(`Error fetching user: ${error}`);
