@@ -4,8 +4,8 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AltitudePic from "../../components/AltitudePic/AltitudePic";
-import Button from "../../components/Button/Button";
-import Header from "../../components/Header/Header";
+import Button from "../../components/common/Button/Button";
+import Header from "../../components/common/Header/Header";
 import TradeRequirementsPage from "../TradeRequirementsPage/TradeRequirementsPage";
 function UserHomePage() {
   const [user, setUser] = useState([]);

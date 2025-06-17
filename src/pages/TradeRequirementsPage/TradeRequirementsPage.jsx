@@ -1,7 +1,7 @@
 import "./TradeRequirementsPage.scss";
 import AltitudePic from "../../components/AltitudePic/AltitudePic";
 import CategoryServiceDetails from "../../components/CategoryServiceDetails/CategoryServiceDetails";
-import Header from "../../components/Header/Header";
+import Header from "../../components/common/Header/Header";
 import CategoriesList from "../../components/CategoriesList/CategoriesList";
 import { useLocation, useParams } from "react-router-dom";
 function TradeRequirementsPage() {

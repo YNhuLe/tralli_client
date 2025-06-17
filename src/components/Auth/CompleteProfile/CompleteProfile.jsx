@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import error from "../../assets/icons/error-24px.svg";
-import Button from "../Button/Button";
+import error from "../../../assets/icons/error-24px.svg";
+import Button from "../../common/Button/Button";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 function CompleteProfile() {

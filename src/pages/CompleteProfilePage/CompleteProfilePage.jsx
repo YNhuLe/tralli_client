@@ -1,9 +1,9 @@
 import "./CompleteProfilePage.scss";
 import logo from "../../assets/images/logo.svg";
-import CompleteProfile from "../../components/CompleteProfile/CompleteProfile";
+import CompleteProfile from "../../components/Auth/CompleteProfile/CompleteProfile";
 import { Link } from "react-router-dom";
-import ServiceTerms from "../../components/ServiceTerms/ServiceTerms";
-import Header from "../../components/Header/Header";
+import ServiceTerms from "../../components/common/ServiceTerms/ServiceTerms";
+import Header from "../../components/common/Header/Header";
 function CompleteProfilePage() {
   return (
     <>

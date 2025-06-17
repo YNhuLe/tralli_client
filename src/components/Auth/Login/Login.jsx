@@ -5,9 +5,9 @@ import {
   getRedirectResult,
   onAuthStateChanged,
 } from "firebase/auth";
-import { auth, googleProvider } from "../../../src/firebase";
+import { auth, googleProvider } from "../../../firebase/config";
 import { useState, useEffect } from "react";
-import Button from "../../components/Button/Button";
+import Button from "../../common/Button/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 function Login() {

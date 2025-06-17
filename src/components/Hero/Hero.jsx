@@ -1,7 +1,7 @@
 import "./Hero.scss";
 import worker from "../../assets/images/worker.svg";
 import vector from "../../assets/images/vector.svg";
-import Button from "../Button/Button";
+import Button from "../common/Button/Button";
 import axios from "axios";
 import { useEffect, useState } from "react";
 

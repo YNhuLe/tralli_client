@@ -33,6 +33,8 @@ function Button({ btnType, url, onSubmit, onClick }) {
           ? "Submit"
           : btnType === "submit-job"
           ? "Job Confirmation"
+          : btnType === "signin"
+          ? "Log In"
           : "Book a free demo"}
       </button>
     );

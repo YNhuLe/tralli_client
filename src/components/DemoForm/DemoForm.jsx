@@ -2,13 +2,13 @@ import { useState } from "react";
 import validator from "validator";
 import "./DemoForm.scss";
 import errors from "../../assets/icons/error-24px.svg";
-import Button from "../Button/Button";
+import Button from "../common/Button/Button";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { X } from "lucide-react";
 import checkmark from "../../assets/icons/confirm-checkmark.svg";
 import ReactModal from "react-modal";
-import Header from "../Header/Header";
+import Header from "../common/Header/Header";
 ReactModal.setAppElement("#root");
 function DemoForm() {
   const [fName, setFName] = useState("");
