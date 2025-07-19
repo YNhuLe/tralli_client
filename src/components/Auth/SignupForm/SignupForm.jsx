@@ -127,11 +127,19 @@ function SignupForm() {
         userData
       );
 
-      navigate(
-        `/categories?fullName=${encodeURIComponent(
-          fullName
-        )}&residentialCom=${encodeURIComponent(residentialCom)}`
-      );
+      // navigate(
+      //   `/categories?fullName=${encodeURIComponent(
+      //     fullName
+      //   )}&residentialCom=${encodeURIComponent(residentialCom)}`
+      // );
+
+      navigate("/categories", {
+        state: {
+          userName: fullName,
+          residentialCom: residentialCom,
+          uid: user.uid,
+        },
+      });
 
       handleReset();
     } catch (error) {

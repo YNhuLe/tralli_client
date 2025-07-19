@@ -5,15 +5,18 @@ import axios from "axios";
 import errors from "../../../assets/icons/error-24px.svg";
 import "./SignIn.scss";
 import validator from "validator";
+import { useNavigate } from "react-router-dom";
 import Button from "../../common/Button/Button";
 function SignIn() {
   const [signinEmail, setSigninEmail] = useState("");
   const [signinPass, setSigninPass] = useState("");
+  const navigate = useNavigate();
   const [signinErr, setSigninErr] = useState({
     signinEmail: "",
     signinPass: "",
   });
-
+  const baseUrl = import.meta.env.VITE_API_URL;
+  const checkUserUrl = `${baseUrl}/check-user`;
   const handleChangeSigninEmail = (event) => {
     setSigninEmail(event.target.value);
   };
@@ -49,24 +52,37 @@ function SignIn() {
     if (Object.values(validatorError).some((error) => error)) {
       return;
     }
-
-    try {
-      Navigate(`
-    /categories?displayName=${encodeURIComponent(displayName)}`);
-      handleResetForm();
-    } catch (error) {
-      console.error("Can not sign in! ", error);
-    }
+    await handleEmailPasswordLogin(signinEmail, signinPass);
+    handleResetForm();
+    // try {
+    //   navigate(`
+    // /categories?displayName=${encodeURIComponent(displayName)}`);
+    //   // handleResetForm();
+    // } catch (error) {
+    //   console.error("Can not sign in! ", error);
+    // }
   };
 
   const handleEmailPasswordLogin = async (email, password) => {
     try {
-      const result = await signInWithEmailAndPassword(auth, email, password);
+      const result = await signInWithEmailAndPassword(
+        auth,
+        email.trim().toLowerCase(),
+        password.trim()
+      );
       const user = result.user;
       const { uid, displayName, email: signinEmail } = user;
       await checkIfUserExists(uid, displayName, signinEmail, navigate);
     } catch (error) {
-      console.error("Can not log in using email and password");
+      console.error(
+        "Can not log in using email and password",
+        error.code,
+        error.message
+      );
+      setSigninErr((prev) => ({
+        ...prev,
+        signinPass: translateFirebaseError(error.code),
+      }));
     }
   };
 
@@ -85,7 +101,7 @@ function SignIn() {
     try {
       const res = await axios.get(`${checkUserUrl}/${uid}`);
       const data = res.data;
-      console.log("data:", data);
+      console.log("DATA:", data);
       //user is not sign up yet, navigate to complete-profile form
       if (!data.exists) {
         navigate("/signup/complete-profile", {
