@@ -7,6 +7,8 @@ import "./SignIn.scss";
 import validator from "validator";
 import { useNavigate } from "react-router-dom";
 import Button from "../../common/Button/Button";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import useTogglePassword from "../../../hooks/useTogglePassword";
 function SignIn() {
   const [signinEmail, setSigninEmail] = useState("");
   const [signinPass, setSigninPass] = useState("");
@@ -15,6 +17,7 @@ function SignIn() {
     signinEmail: "",
     signinPass: "",
   });
+  const { inputType, togglePassword, showPassword } = useTogglePassword();
   const baseUrl = import.meta.env.VITE_API_URL;
   const checkUserUrl = `${baseUrl}/check-user`;
   const handleChangeSigninEmail = (event) => {
@@ -140,7 +143,7 @@ function SignIn() {
 
         <div>
           <input
-            type="text"
+            type={inputType}
             value={signinPass}
             name="signinPass"
             onChange={handleChangeSigninPass}
@@ -149,6 +152,10 @@ function SignIn() {
               signinErr.signinPass ? "invalid" : ""
             }`}
           />
+
+          <span onClick={togglePassword} className="input-icon">
+            {showPassword ? <FaEye /> : <FaEyeSlash />}
+          </span>
 
           <div className={signinErr.signinPass ? "error__state" : ""}>
             {signinErr.signinPass && (
