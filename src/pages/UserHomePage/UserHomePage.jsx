@@ -40,7 +40,12 @@ function UserHomePage() {
 
       try {
         const response = await getUserDetails(firebaseUser.uid);
+        console.log("LOG: ", response);
         setUser(response.data);
+        // setUser({
+        //   userName: "we",
+        //   residentialCom: "Sheridan PArk",
+        // });
 
         setLoading(false);
       } catch (error) {
