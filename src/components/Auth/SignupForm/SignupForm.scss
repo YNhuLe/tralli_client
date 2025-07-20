@@ -21,3 +21,15 @@
 .invalid {
   border-color: $red-error;
 }
+
+.input{
+  &-wrapper{
+    position: relative;
+  }
+  
+  &-icon{
+position: absolute;
+top: 50%;
+right: 7%;
+cursor: pointer;
+}}

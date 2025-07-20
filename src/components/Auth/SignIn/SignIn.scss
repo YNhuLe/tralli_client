@@ -25,10 +25,19 @@
 }
 .forgot__pass {
   @include mobile-footer-copy;
-  color: #551a8b;
+  color: $forgot-pass;
   margin-right: 0;
 }
 
-.input-icon{
+
+.input{
+  &-wrapper{
+    position: relative;
+  }
   
-}
+  &-icon{
+position: absolute;
+top: 50%;
+right: 7%;
+cursor: pointer;
+}}

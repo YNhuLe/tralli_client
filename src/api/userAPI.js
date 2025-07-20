@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const baseUrl = import.meta.env.VITE_API_URL;
-// const userDetails = `${baseUrl}/categories/user/${UID}`;
+console.log("Base URL: ", baseUrl);
+
 export const getUserDetails = (UID) => {
-  return axios.get(`{baseUrl}/user/${UID}`);
+  return axios.get(`${baseUrl}/user/${UID}`);
 };
