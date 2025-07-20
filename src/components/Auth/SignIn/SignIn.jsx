@@ -142,21 +142,22 @@ function SignIn() {
         </div>
 
         <div>
-          <input
-            type={inputType}
-            value={signinPass}
-            name="signinPass"
-            onChange={handleChangeSigninPass}
-            placeholder="Password"
-            className={`signin__form-input ${
-              signinErr.signinPass ? "invalid" : ""
-            }`}
-          />
+          <div className="input-wrapper">
+            <input
+              type={inputType}
+              value={signinPass}
+              name="signinPass"
+              onChange={handleChangeSigninPass}
+              placeholder="Password"
+              className={`signin__form-input ${
+                signinErr.signinPass ? "invalid" : ""
+              }`}
+            />
 
-          <span onClick={togglePassword} className="input-icon">
-            {showPassword ? <FaEye /> : <FaEyeSlash />}
-          </span>
-
+            <span onClick={togglePassword} className="input-icon">
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
+            </span>
+          </div>
           <div className={signinErr.signinPass ? "error__state" : ""}>
             {signinErr.signinPass && (
               <>

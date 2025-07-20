@@ -6,7 +6,8 @@ import axios from "axios";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import validator from "validator";
-
+import useTogglePassword from "../../../hooks/useTogglePassword";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 function SignupForm() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -26,7 +27,17 @@ function SignupForm() {
     residentialCom: "",
     address: "",
   });
+  const {
+    inputType: inputType1,
+    togglePassword: togglePassword1,
+    showPassword: showPassword1,
+  } = useTogglePassword();
 
+  const {
+    inputType: inputType2,
+    togglePassword: togglePassword2,
+    showPassword: showPassword2,
+  } = useTogglePassword();
   const baseUrl = import.meta.env.VITE_API_URL;
 
   const addUserUrl = `${baseUrl}/newUser`;
@@ -203,14 +214,21 @@ function SignupForm() {
         </div>
 
         <div className="signup__form-property">
-          <input
-            type="password"
-            value={password}
-            name="password"
-            onChange={handleChangePassword}
-            placeholder="Password"
-            className={`signup__form-input ${error.password ? "invalid" : ""}`}
-          />
+          <div className="input-wrapper">
+            <input
+              type={inputType1}
+              value={password}
+              name="password"
+              onChange={handleChangePassword}
+              placeholder="Password"
+              className={`signup__form-input ${
+                error.password ? "invalid" : ""
+              }`}
+            />
+            <span onClick={togglePassword1} className="input-icon">
+              {showPassword1 ? <FaEye /> : <FaEyeSlash />}
+            </span>
+          </div>
           <div className={error.password ? "error__state" : ""}>
             {error.password && (
               <>
@@ -222,16 +240,21 @@ function SignupForm() {
         </div>
 
         <div className="signup__form-property">
-          <input
-            type="password"
-            value={confirmedPass}
-            name="confirmedPass"
-            onChange={handleChangeConfirmedPass}
-            placeholder="Confirmed Password"
-            className={`signup__form-input ${
-              error.confirmedPass ? "invalid" : ""
-            }`}
-          />
+          <div className="input-wrapper">
+            <input
+              type={inputType2}
+              value={confirmedPass}
+              name="confirmedPass"
+              onChange={handleChangeConfirmedPass}
+              placeholder="Confirmed Password"
+              className={`signup__form-input ${
+                error.confirmedPass ? "invalid" : ""
+              }`}
+            />
+            <span onClick={togglePassword2} className="input-icon">
+              {showPassword2 ? <FaEye /> : <FaEyeSlash />}
+            </span>
+          </div>
           <div className={error.confirmedPass ? "error__state" : ""}>
             {error.confirmedPass && (
               <>
