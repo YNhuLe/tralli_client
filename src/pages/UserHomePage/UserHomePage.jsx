@@ -1,38 +1,11 @@
 import CategoriesList from "../../components/CategoriesList/CategoriesList";
 import "./UserHomePage.scss";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import AltitudePic from "../../components/AltitudePic/AltitudePic";
 import Button from "../../components/common/Button/Button";
 import Header from "../../components/common/Header/Header";
-import { getUserDetails } from "../../api/userAPI";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../firebase/config";
+import { useUser } from "../../context/UserProvider";
 function UserHomePage() {
-  const [user, setUser] = useState();
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      if (!firebaseUser) {
-        alert("You must log into access this page");
-        navigate("/login");
-        return;
-      }
-
-      try {
-        const response = await getUserDetails(firebaseUser.uid);
-        console.log("LOG: ", response.data);
-        setUser(response.data);
-
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-      }
-    });
-    return () => unsubscribe();
-  }, [navigate]);
+  const { user, loading } = useUser();
 
   if (loading || !user) {
     return <h1>Loading users..</h1>;
@@ -49,7 +22,7 @@ function UserHomePage() {
       <section className="categories__section">
         <Header formType="signup" />
         <h1 className="categories__user">
-          Welcome, {user?.user_name || "Guest"}
+          Welcome, {user?.user_name || "Guest"} !
         </h1>
         <AltitudePic
           residentialCom={user?.residential_community || "Residence"}
