@@ -5,7 +5,7 @@ import Button from "../../common/Button/Button";
 import axios from "axios";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import validator from "validator";
+import { validateProfileFields } from "../../../utils/validator";
 import useTogglePassword from "../../../hooks/useTogglePassword";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 function SignupForm() {
@@ -66,27 +66,17 @@ function SignupForm() {
   const handleChangeResidentialCom = (event) => {
     setResidentialCom(event.target.value);
   };
-
-  const phoneRegex = /^\+\d{1,3} \(\d{3}\) \d{3}-\d{4}$/;
   const newError = () => {
     return {
-      fullName: fullName.trim() ? "" : "Full name is required!",
-
-      address: address.trim() ? "" : "Address is required!",
-      password: password.trim() ? "" : "Password is required!",
-      confirmedPass: confirmedPass.trim()
-        ? ""
-        : "Confirmed password is required!",
-      phoneNumber: !phoneNumber.trim()
-        ? "Phone number field is required!"
-        : !phoneRegex.test(phoneNumber)
-        ? "Phone number must be in format: +1 (919) 797-2875"
-        : "",
-      email: !email.trim()
-        ? "Email field is required!"
-        : !validator.isEmail(email)
-        ? "Email must be valid"
-        : "",
+      ...validateProfileFields({
+        fullName,
+        email,
+        password,
+        confirmedPass,
+        phoneNumber,
+        residentialCom,
+        address,
+      }),
     };
   };
 
