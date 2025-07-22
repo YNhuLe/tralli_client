@@ -8,8 +8,7 @@
     height: 6rem;
     border-radius: 0.5rem;
     object-fit: covers;
-
-    background-color: $secondary-light-grey;
+    background-color: $profile-bg;
     @include flex(row, center, center);
   }
   &__img {
