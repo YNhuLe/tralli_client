@@ -1,0 +1,29 @@
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+.profile {
+  margin: 0 1rem;
+  cursor: pointer;
+  &__pic {
+    width: 5rem;
+    height: 6rem;
+    border-radius: 0.5rem;
+    object-fit: covers;
+
+    background-color: $secondary-light-grey;
+    @include flex(row, center, center);
+  }
+  &__img {
+    width: 5rem;
+    height: 6rem;
+    border-radius: 0.5rem;
+    object-fit: covers;
+  }
+  &__text {
+    @include mobile-footer-copy;
+    @include flex(row, center, center);
+    text-align: center;
+    margin: auto 1rem;
+    color: $secondary-light-grey-2;
+    cursor: pointer;
+  }
+}

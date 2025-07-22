@@ -16,6 +16,7 @@ import BusinessDetails from "./pages/BusinessDetails/BusinessDetails";
 import CompleteProfilePage from "./pages/CompleteProfilePage/CompleteProfilePage";
 import SignInPage from "./pages/SignInPage/SignInPage";
 import { UserProvider } from "./context/UserProvider";
+import SetUpProfilePage from "./pages/SetUpProfilePage/SetUpProfilePage";
 function App() {
   return (
     <div>
@@ -26,6 +27,7 @@ function App() {
             <Route path="/" element={<HomePageContent />} />
             <Route path="/demo" element={<FormPage />} />
             <Route path="/signup" element={<SignupPage />} />
+            <Route path="/signup/profile" element={<SetUpProfilePage />} />
             <Route path="/login" element={<SignInPage />} />
             {/* <Route path="/home/login" element={<LoginPage />} />  */}
             <Route path="/categories" element={<UserHomePage />} />
