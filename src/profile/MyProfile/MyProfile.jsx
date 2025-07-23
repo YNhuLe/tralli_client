@@ -43,88 +43,94 @@ function MyProfile() {
     return <h1>Loading users..</h1>;
   }
   return (
-    <section className="profile">
-      <div className="profile__container">
-        <h2 className="profile__title">Complete Your Profile</h2>
-        <div className="profile__pic">
-          <label>
-            {previewUrl ? (
-              <img src={previewUrl} alt="Preview" className="profile__img" />
-            ) : (
-              <span className="profile__text"> Add Profile Picture</span>
-            )}
+    <>
+      <h2 className="profile__title">Complete Your Profile</h2>
+      <section className="profile">
+        <div className="profile__container">
+          <div className="profile__pic">
+            <label>
+              {previewUrl ? (
+                <img src={previewUrl} alt="Preview" className="profile__img" />
+              ) : (
+                <span className="profile__text"> Add Profile Picture</span>
+              )}
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                hidden
+              />
+            </label>
+          </div>
+        </div>
+
+        <div className="profile__fields">
+          <div>
+            <label className="profile__fields-fname"> Full Name</label>
             <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              hidden
+              type="text"
+              value={fullName}
+              onChange={handleChangeFullName}
+              className={`profile__fields-input ${
+                error.fullName ? "invalid" : ""
+              }`}
             />
-          </label>
-        </div>
-      </div>
+            <div className={error.fullName ? "error__state" : ""}>
+              {error.fullName && (
+                <>
+                  <img src={errors} alt="error-icon" className="error__icon" />
+                  <p className="error__message">This field is required</p>
+                </>
+              )}
+            </div>
+          </div>
 
-      <div className="profile__fields">
-        <div>
-          <label> Full Name</label>
-          <input
-            type="text"
-            value={fullName}
-            onChange={handleChangeFullName}
-            className={`signup__form-input ${error.fullName ? "invalid" : ""}`}
-          />
-          <div className={error.fullName ? "error__state" : ""}>
-            {error.fullName && (
-              <>
-                <img src={errors} alt="error-icon" className="error__icon" />
-                <p className="error__message">This field is required</p>
-              </>
-            )}
+          <div>
+            <label className="profile__fields-email"> Email</label>
+            <input
+              type="text"
+              value={email}
+              onChange={handleChangeEmail}
+              className={`profile__fields-input ${
+                error.email ? "invalid" : ""
+              }`}
+            />
+            <div className={error.email ? "error__state" : ""}>
+              {error.email && (
+                <>
+                  <img src={errors} alt="error-icon" className="error__icon" />
+                  <p className="error__message">{error.email}</p>
+                </>
+              )}
+            </div>
+          </div>
+
+          <div>
+            <label className="profile__fields-phone"> Phone</label>
+            <input
+              type="text"
+              value={phoneNumber}
+              onChange={handleChangePhoneNumber}
+              className={`profile__fields-input ${
+                error.phoneNumber ? "invalid" : ""
+              }`}
+            />
+
+            <div className={error.phoneNumber ? "error__state" : ""}>
+              {error.phoneNumber && (
+                <>
+                  <img src={errors} alt="error-icon" className="error__icon" />
+                  <p className="error__message">
+                    {error.phoneNumber ||
+                      "This field is required in format: +0 (000) 000-0000"}
+                  </p>
+                </>
+              )}
+            </div>
           </div>
         </div>
-
-        <div>
-          <label> Email</label>
-          <input
-            type="text"
-            value={email}
-            onChange={handleChangeEmail}
-            className={`signup__form-input ${error.email ? "invalid" : ""}`}
-          />
-          <div className={error.email ? "error__state" : ""}>
-            {error.email && (
-              <>
-                <img src={errors} alt="error-icon" className="error__icon" />
-                <p className="error__message">{error.email}</p>
-              </>
-            )}
-          </div>
-        </div>
-
-        <div>
-          <label> Phone</label>
-          <input
-            type="text"
-            value={phoneNumber}
-            onChange={handleChangePhoneNumber}
-            className={`signup__form-input ${
-              error.phoneNumber ? "invalid" : ""
-            }`}
-          />
-
-          <div className={error.phoneNumber ? "error__state" : ""}>
-            {error.phoneNumber && (
-              <>
-                <img src={errors} alt="error-icon" className="error__icon" />
-                <p className="error__message">
-                  {error.phoneNumber ||
-                    "This field is required in format: +0 (000) 000-0000"}
-                </p>
-              </>
-            )}
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 

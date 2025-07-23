@@ -2,20 +2,23 @@
 @use "../../styles/partials/variables" as *;
 .profile {
   margin: 0 1rem;
-  cursor: pointer;
+  margin-top: 2rem;
+  @include flex(row, center, flex-start);
+  height: calc(100% - 5.5rem);
   &__pic {
-    width: 5rem;
-    height: 6rem;
     border-radius: 0.5rem;
-    object-fit: covers;
     background-color: $profile-bg;
     @include flex(row, center, center);
+    width: 100%;
+    height: calc(100% - 5.5rem);
+    overflow: hidden;
   }
   &__img {
-    width: 5rem;
-    height: 6rem;
+    width: 100%;
+
+    height: 20vh;
+    object-fit: cover;
     border-radius: 0.5rem;
-    object-fit: covers;
   }
   &__text {
     @include mobile-footer-copy;
@@ -23,6 +26,60 @@
     text-align: center;
     margin: auto 1rem;
     color: $secondary-light-grey-2;
+    cursor: pointer;
+  }
+  &__container {
+    width: calc(100% - 8rem);
+    height: 15rem;
+  }
+  &__fields {
+    padding-left: 1rem;
+    &-email,
+    &-phone,
+    &-fname {
+      @include mobile-footer-copy;
+    }
+    &-input {
+      height: 1.5rem;
+      background-color: $profile-bg;
+      border-style: none;
+      max-width: 100%;
+      width: calc(100% - 0.5rem);
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+.error {
+  &__state {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding-top: 0.25rem;
+  }
+
+  &__icon {
+    height: 1rem;
+  }
+
+  &__message {
+    color: $red-error;
+  }
+}
+
+.invalid {
+  border-color: $red-error;
+}
+
+.input {
+  &-wrapper {
+    position: relative;
+  }
+
+  &-icon {
+    position: absolute;
+    top: 50%;
+    right: 7%;
     cursor: pointer;
   }
 }
