@@ -35,8 +35,8 @@ function MyProfile() {
   useEffect(() => {
     if (user) {
       setFullName(user.user_name);
-      setEmail(user.address);
-      setPhoneNumber(user.residential_community);
+      setEmail(user.email);
+      setPhoneNumber(user.phone_number);
     }
   }, [user]);
   if (loading || !user) {
