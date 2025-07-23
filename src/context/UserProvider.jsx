@@ -10,21 +10,21 @@ function UserProvider({ children }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      if (!firebaseUser) {
-        alert("You must log in to access this page!");
-        navigate("/login");
-        return;
-      }
-      try {
-        const response = await getUserDetails(firebaseUser.uid);
-        console.log("LOG: ", response.data);
-        setUser(response.data);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-      }
-    });
+  const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+    if (!firebaseUser) {
+      alert("You must log in to access this page!");
+      navigate("/login");
+      return;
+    }
+    try {
+      const response = await getUserDetails(firebaseUser.uid);
+      console.log("LOG: ", response.data);
+      setUser(response.data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
+  });
     return () => unsubscribe();
   }, [navigate]);
   return (
