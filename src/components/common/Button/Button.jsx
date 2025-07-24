@@ -19,6 +19,8 @@ function Button({ btnType, url, onSubmit, onClick }) {
             ? "btn-submit"
             : btnType === "submit-job"
             ? "submit-job"
+            : btnType === "complete_profile"
+            ? "complete_profile"
             : ""
         }`}>
         {btnType === "demo"
@@ -28,13 +30,15 @@ function Button({ btnType, url, onSubmit, onClick }) {
           : btnType === "open_camera"
           ? "Open your camera application"
           : btnType === "signup"
-          ? "Sign Up"
+          ? "Create Account"
           : btnType === "submit"
           ? "Submit"
           : btnType === "submit-job"
           ? "Job Confirmation"
           : btnType === "signin"
           ? "Log In"
+          : btnType === "complete_profile"
+          ? "Save Profile"
           : "Book a free demo"}
       </button>
     );

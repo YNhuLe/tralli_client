@@ -105,7 +105,6 @@ function SignupForm() {
     }
 
     try {
-      console.log("Inside the try============");
       const auth = getAuth();
 
       const userCredentials = await createUserWithEmailAndPassword(
