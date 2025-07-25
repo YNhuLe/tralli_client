@@ -48,7 +48,7 @@ function MyProfile() {
       <section className="profile">
         <div className="profile__container">
           <div className="profile__pic">
-            <label>
+            <label className="pic__label">
               {previewUrl ? (
                 <img src={previewUrl} alt="Preview" className="profile__img" />
               ) : (

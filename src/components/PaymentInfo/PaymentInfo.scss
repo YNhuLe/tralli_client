@@ -1,7 +1,40 @@
-
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixin" as *;
 
-.payment__section{
+.payment {
+    width: 100%;
+  &__section {
     margin: 1rem;
+  }
+
+  &__label {
+    @include mobile-body-copy;
+  }
+
+  &__sec{
+    @include flex(row, center, center);
+    gap: 1rem;
+  }
+
+  &__form{
+    
+    
+    &-input{
+    width: 100%;
+    background-color: $profile-bg;
+    border-style: none;
+    margin-top: .5rem;
+  }
+
+  &-property{
+    margin-top: 1rem;
+  }
+}
+&__title{
+  @include mobile-section-header;
+}
+
+}
+input.input-cvv{
+    width:70px;
 }

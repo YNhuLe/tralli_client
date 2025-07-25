@@ -133,7 +133,7 @@ function SignupForm() {
       //   )}&residentialCom=${encodeURIComponent(residentialCom)}`
       // );
 
-      navigate("/categories", {
+      navigate("/signup/profile", {
         state: {
           userName: fullName,
           residentialCom: residentialCom,

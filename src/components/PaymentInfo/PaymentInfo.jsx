@@ -20,7 +20,7 @@ function PaymentInfo() {
   };
 
   const handleChangeCvv = (event) => {
-    setChangeCvv(event.target.value);
+    setCvv(event.target.value);
   };
 
   const handleChangeNameOnCard = (event) => {
@@ -37,7 +37,7 @@ function PaymentInfo() {
 
   return (
     <section className="payment__section">
-      <h2>Payment Information</h2>
+      <h2 className="payment__title">Payment Information</h2>
       <form className="payment__form">
         <div className="payment__form-property">
           <label className="payment__label">Card Number</label>
@@ -57,77 +57,85 @@ function PaymentInfo() {
           </div>
         </div>
 
-        <div className="payment__form-property">
-          <label className="payment__label">Expiration Date(MM/YY)</label>
-          <input
-            type="text"
-            value={cvv}
-            onChange={handleChangeCvv}
-            className={`payment__form-input ${error.cvv ? "invalid" : ""}`}
-          />
-          <div className={error.cvv ? "error__state" : ""}>
-            {error.cvv && (
-              <>
-                <img src={errors} alt="error-icon" className="error__icon" />
-                <p className="error__message">This field is required</p>
-              </>
-            )}
+        <div className="payment__sec">
+          <div className="payment__form-property">
+            <label className="payment__label">Expiration Date(MM/YY)</label>
+            <input
+              type="text"
+              value={expirationDate}
+              onChange={handleChangeExpirationDate}
+              className={`payment__form-input ${error.cvv ? "invalid" : ""}`}
+            />
+            <div className={error.expirationDate ? "error__state" : ""}>
+              {error.expirationDate && (
+                <>
+                  <img src={errors} alt="error-icon" className="error__icon" />
+                  <p className="error__message">This field is required</p>
+                </>
+              )}
+            </div>
+          </div>
+
+          <div className="payment__form-property">
+            <label className="payment__label">Zip/Postal Code</label>
+            <input
+              type="text"
+              value={zipCode}
+              onChange={handleChangeZipCode}
+              className={`payment__form-input ${
+                error.zipCode ? "invalid" : ""
+              }`}
+            />
+            <div className={error.zipCode ? "error__state" : ""}>
+              {error.zipCode && (
+                <>
+                  <img src={errors} alt="error-icon" className="error__icon" />
+                  <p className="error__message">This field is required</p>
+                </>
+              )}
+            </div>
           </div>
         </div>
 
-        <div className="payment__form-property">
-          <label className="payment__label">Zip/Postal Code</label>
-          <input
-            type="text"
-            value={zipCode}
-            onChange={handleChangeZipCode}
-            className={`payment__form-input ${error.zipCode ? "invalid" : ""}`}
-          />
-          <div className={error.zipCode ? "error__state" : ""}>
-            {error.zipCode && (
-              <>
-                <img src={errors} alt="error-icon" className="error__icon" />
-                <p className="error__message">This field is required</p>
-              </>
-            )}
+        <div className="payment__sec">
+          <div className="payment__form-property">
+            <label className="payment__label">Name on card</label>
+            <input
+              type="text"
+              value={nameOnCard}
+              onChange={handleChangeNameOnCard}
+              className={`payment__form-input ${
+                error.zipCode ? "invalid" : ""
+              }`}
+            />
+            <div className={error.nameOnCard ? "error__state" : ""}>
+              {error.nameOnCard && (
+                <>
+                  <img src={errors} alt="error-icon" className="error__icon" />
+                  <p className="error__message">This field is required</p>
+                </>
+              )}
+            </div>
           </div>
-        </div>
 
-        <div className="payment__form-property">
-          <label className="payment__label">Name on card</label>
-          <input
-            type="text"
-            value={nameOnCard}
-            onChange={handleChangeNameOnCard}
-            className={`payment__form-input ${error.zipCode ? "invalid" : ""}`}
-          />
-          <div className={error.nameOnCard ? "error__state" : ""}>
-            {error.nameOnCard && (
-              <>
-                <img src={errors} alt="error-icon" className="error__icon" />
-                <p className="error__message">This field is required</p>
-              </>
-            )}
-          </div>
-        </div>
-
-        <div className="payment__form-property">
-          <label className="payment__label">CVV (3 digits)</label>
-          <input
-            type="text"
-            value={expirationDate}
-            onChange={handleChangeExpirationDate}
-            className={`payment__form-input ${
-              error.expirationDate ? "invalid" : ""
-            }`}
-          />
-          <div className={error.expirationDate ? "error__state" : ""}>
-            {error.expirationDate && (
-              <>
-                <img src={errors} alt="error-icon" className="error__icon" />
-                <p className="error__message">This field is required</p>
-              </>
-            )}
+          <div className="payment__form-property">
+            <label className="payment__label">CVV (3 digits)</label>
+            <input
+              type="text"
+              value={cvv}
+              onChange={handleChangeCvv}
+              className={`payment__form-input ${
+                error.expirationDate ? "invalid" : ""
+              } input-cvv`}
+            />
+            <div className={error.cvv ? "error__state" : ""}>
+              {error.cvv && (
+                <>
+                  <img src={errors} alt="error-icon" className="error__icon" />
+                  <p className="error__message">This field is required</p>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </form>
