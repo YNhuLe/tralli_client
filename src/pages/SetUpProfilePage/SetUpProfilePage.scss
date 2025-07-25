@@ -1,2 +1,8 @@
 @use "../../styles/partials/mixin" as *;
 @use "../../styles/partials/variables" as *;
+
+
+.signup__profile-com{
+    @include mobile-section-header;
+    margin-left: 1rem;
+}
